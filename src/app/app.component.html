@@ -1,31 +1,38 @@
-<div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+<div class="min-h-screen bg-light-gray-bg">
   <div class="max-w-4xl mx-auto p-4 pb-24">
     
     <!-- HOME TAB -->
     <div *ngIf="activeTab === 'home'" class="space-y-6">
-      <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl p-8 text-white">
+      <div class="bg-sky-primary rounded-2xl p-8 text-pure-white">
         <h1 class="text-3xl font-bold mb-2">Bem-vindo ao ClimEvent</h1>
-        <p class="text-blue-50 mb-6">Planeje eventos com previsões climáticas personalizadas e inteligentes</p>
+        <p class="text-pure-white opacity-90 mb-6">Planeje eventos com previsões climáticas personalizadas e inteligentes</p>
         <button 
           (click)="setActiveTab('create')"
-          class="bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:bg-blue-50 transition">
+            class="bg-pure-white text-sky-primary px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:bg-sky-primary/10 transition-colors">
           <span>+</span>
           Criar Novo Evento
         </button>
       </div>
 
       <div>
-        <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-gray-800">
-          <span>📋</span>
+        <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-dark-gray-text">
+          <svg class="svg-icon text-deep-secondary" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
+            <path d="M3.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-1-1A1.5 1.5 0 0 0 1 1.5v1A1.5 1.5 0 0 0 2.5 4h11A1.5 1.5 0 0 0 15 2.5v-1A1.5 1.5 0 0 0 13.5 0z"/>
+            <path d="M1 5.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5zM2 6v7h12V6z"/>
+          </svg>
           Meus Eventos
         </h2>
         <div class="space-y-4">
-          <div *ngFor="let event of events" class="bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-md transition">
+          <div *ngFor="let event of events" class="bg-pure-white rounded-xl p-6 border border-gray-200 hover:border-sky-primary hover:shadow-lg transition-all duration-300">
             <div class="flex justify-between items-start mb-4">
               <div>
-                <h3 class="font-bold text-lg mb-1 text-gray-800">{{ event.name }}</h3>
+                <h3 class="font-bold text-lg mb-1 text-dark-gray-text">{{ event.name }}</h3>
                 <p class="text-gray-500 text-sm flex items-center gap-2">
-                  <span>📅</span>
+                  <svg class="svg-icon-sm text-sky-primary" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                  </svg>
                   {{ formatDate(event.date) }} às {{ event.time }}
                 </p>
               </div>
@@ -35,49 +42,63 @@
             </div>
 
             <div class="grid grid-cols-3 gap-4 mb-4">
-              <div class="bg-slate-50 rounded-lg p-3 border border-slate-100">
+              <div class="bg-pure-white rounded-lg p-3 border border-gray-100 shadow-sm">
                 <div class="flex items-center gap-2 mb-1">
-                  <span class="text-slate-600">💨</span>
-                  <span class="text-xs text-slate-500">Vento</span>
+                  <svg class="svg-icon-sm text-sky-primary" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M7.5 4.75a.5.5 0 0 0-1 0v3.5a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 0 0-1 0v3.5a.5.5 0 0 0 1 0zm-5 1.5a.5.5 0 0 0-1 0v1.5a.5.5 0 0 0 1 0zm6 0a.5.5 0 0 0-1 0v1.5a.5.5 0 0 0 1 0z"/>
+                  </svg>
+                  <span class="text-xs text-gray-500">Vento</span>
                 </div>
-                <p class="font-bold text-slate-700">{{ event.weather.wind }} km/h</p>
+                <p class="font-bold text-dark-gray-text">{{ event.weather.wind }} km/h</p>
               </div>
-              <div class="bg-slate-50 rounded-lg p-3 border border-slate-100">
+              <div class="bg-pure-white rounded-lg p-3 border border-gray-100 shadow-sm">
                 <div class="flex items-center gap-2 mb-1">
-                  <span class="text-slate-600">💧</span>
-                  <span class="text-xs text-slate-500">Chuva</span>
+                  <svg class="svg-icon-sm text-sky-primary" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 16a6 6 0 0 0 6-6c0-1.887-1.278-3.472-3-4.014V4.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.486C9.278 6.528 8 8.113 8 10a6 6 0 0 0 0 6m-2-6a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                    <path d="M4.5 12a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+                  </svg>
+                  <span class="text-xs text-gray-500">Chuva</span>
                 </div>
-                <p class="font-bold text-slate-700">{{ event.weather.rain }}%</p>
+                <p class="font-bold text-dark-gray-text">{{ event.weather.rain }}%</p>
               </div>
-              <div class="bg-slate-50 rounded-lg p-3 border border-slate-100">
+              <div class="bg-pure-white rounded-lg p-3 border border-gray-100 shadow-sm">
                 <div class="flex items-center gap-2 mb-1">
-                  <span class="text-slate-600">☀️</span>
-                  <span class="text-xs text-slate-500">Temp.</span>
+                  <svg class="svg-icon-sm text-sun-alerts" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                  </svg>
+                  <span class="text-xs text-gray-500">Temp.</span>
                 </div>
-                <p class="font-bold text-slate-700">{{ event.weather.temp }}°C</p>
+                <p class="font-bold text-dark-gray-text">{{ event.weather.temp }}°C</p>
               </div>
             </div>
 
             <div class="flex items-center justify-between text-sm">
               <span class="text-gray-500 flex items-center gap-1">
-                <span>👥</span>
+                <svg class="svg-icon-sm text-sky-primary" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1a.261.261 0 0 1-.022-.001V7.022a.261.261 0 0 1 .022-.001c.076 0 .143.034.172.077a.75.75 0 0 1-.11.106l-3.5 3.5a.75.75 0 0 1-1.06 0l-3.5-3.5a.75.75 0 0 1 .106-1.06.75.75 0 0 1 .106-.11V2a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 .75.75v11z"/>
+                </svg>
                 {{ event.participants }} participantes
               </span>
-              <button class="text-blue-600 font-semibold hover:text-blue-700">
-                Ver Detalhes →
+              <button class="text-sky-primary font-semibold hover:text-deep-secondary transition-colors">
+                Ver Detalhes
+                <svg class="svg-icon-sm inline ml-1" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+      <div class="bg-pure-white rounded-xl p-6 border border-sky-primary shadow-lg">
         <div class="flex items-start gap-4">
-          <div class="bg-blue-500 rounded-full p-3">
-            <span class="text-white text-2xl">📊</span>
+          <div class="bg-deep-secondary rounded-full p-3">
+            <svg class="svg-icon text-pure-white" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm4.5 0a.5.5 0 0 0 0 1H15a.5.5 0 0 0 0-1zm0 5a.5.5 0 0 0 0 1H15a.5.5 0 0 0 0-1zm0 5a.5.5 0 0 0 0 1H15a.5.5 0 0 0 0-1z"/>
+            </svg>
           </div>
           <div>
-            <h3 class="font-bold mb-2 text-gray-800">Powered by NASA + IA</h3>
+            <h3 class="font-bold mb-2 text-dark-gray-text">Powered by NASA + IA</h3>
             <p class="text-gray-600 text-sm">
               Utilizamos dados históricos da NASA e inteligência artificial para projeções até 4 meses com alta precisão
             </p>
@@ -89,32 +110,34 @@
     <!-- CREATE EVENT TAB -->
     <div *ngIf="activeTab === 'create'" class="space-y-6">
       <div>
-        <h2 class="text-2xl font-bold mb-2 text-gray-800">Criar Novo Evento</h2>
+        <h2 class="text-2xl font-bold mb-2 text-dark-gray-text">Criar Novo Evento</h2>
         <p class="text-gray-600">Selecione um template ou crie condições personalizadas</p>
       </div>
 
       <div>
-        <h3 class="font-semibold mb-3 text-gray-800">Templates Rápidos</h3>
+        <h3 class="font-semibold mb-3 text-dark-gray-text">Templates Rápidos</h3>
         <div class="grid grid-cols-2 gap-4 max-h-96 overflow-y-auto pr-2">
           <button *ngFor="let template of eventTemplates" 
-            class="bg-white rounded-xl p-4 border border-gray-200 hover:border-blue-400 hover:shadow-md transition text-left">
-            <div [class]="template.color + ' w-12 h-12 rounded-full flex items-center justify-center text-white mb-3'">
-              <span class="text-2xl">⚡</span>
+            class="bg-pure-white rounded-xl p-4 border border-gray-200 hover:border-sky-primary hover:shadow-lg transition-all duration-300 text-left">
+            <div class="bg-sky-primary w-12 h-12 rounded-full flex items-center justify-center text-white mb-3">
+              <svg class="svg-icon text-white" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M7.5 4.75a.5.5 0 0 0-1 0v3.5a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 0 0-1 0v3.5a.5.5 0 0 0 1 0zm-5 1.5a.5.5 0 0 0-1 0v1.5a.5.5 0 0 0 1 0zm6 0a.5.5 0 0 0-1 0v1.5a.5.5 0 0 0 1 0z"/>
+              </svg>
             </div>
-            <h4 class="font-bold mb-1 text-gray-800">{{ template.name }}</h4>
+            <h4 class="font-bold mb-1 text-dark-gray-text">{{ template.name }}</h4>
             <p class="text-xs text-gray-500">{{ template.conditions }}</p>
           </button>
         </div>
       </div>
 
-      <div class="bg-white rounded-xl p-6 border border-gray-200 space-y-4">
+      <div class="bg-pure-white rounded-xl p-6 border border-gray-200 shadow-md space-y-4">
         <div>
           <label class="block font-semibold mb-2 text-gray-700">Nome do Evento</label>
           <input 
             type="text" 
             [(ngModel)]="newEvent.name"
             placeholder="Ex: Campeonato de Surf 2025"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none"
           />
         </div>
 
@@ -124,7 +147,7 @@
             <input 
               type="date" 
               [(ngModel)]="newEvent.date"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none"
             />
           </div>
           <div>
@@ -132,84 +155,95 @@
             <input 
               type="time" 
               [(ngModel)]="newEvent.time"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none"
             />
           </div>
         </div>
 
         <div>
-          <h4 class="font-semibold mb-3 text-gray-700">Condições Climáticas Desejadas</h4>
+          <h4 class="font-semibold mb-3 text-dark-gray-text">Condições Climáticas Desejadas</h4>
           
           <div class="space-y-3 max-h-96 overflow-y-auto pr-2">
-            <label class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg cursor-pointer hover:bg-slate-100 border border-slate-100">
-              <input type="checkbox" [(ngModel)]="weatherConditions.noRain" class="w-5 h-5 text-blue-600" />
+            <label class="flex items-center gap-3 p-3 bg-pure-white rounded-lg cursor-pointer hover:bg-gray-50 border border-gray-200 transition-colors">
+              <input type="checkbox" [(ngModel)]="weatherConditions.noRain" class="w-5 h-5 text-sky-primary" />
               <div class="flex items-center gap-2">
-                <span>🌧️</span>
-                <span class="text-gray-700">Sem chuva</span>
+                <svg class="svg-icon-sm text-sky-primary" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16a6 6 0 0 0 6-6c0-1.887-1.278-3.472-3-4.014V4.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.486C9.278 6.528 8 8.113 8 10a6 6 0 0 0 0 6m-2-6a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                  <path d="M4.5 12a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+                </svg>
+                <span class="text-dark-gray-text">Sem chuva</span>
               </div>
             </label>
 
-            <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+            <div class="p-3 bg-pure-white rounded-lg border border-gray-200">
               <label class="flex items-center gap-3 mb-2">
-                <input type="checkbox" [(ngModel)]="weatherConditions.wind.enabled" class="w-5 h-5 text-blue-600" />
+                <input type="checkbox" [(ngModel)]="weatherConditions.wind.enabled" class="w-5 h-5 text-sky-primary" />
                 <div class="flex items-center gap-2">
-                  <span>💨</span>
-                  <span class="text-gray-700">Velocidade do vento</span>
+                  <svg class="svg-icon-sm text-sky-primary" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M7.5 4.75a.5.5 0 0 0-1 0v3.5a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 0 0-1 0v3.5a.5.5 0 0 0 1 0zm-5 1.5a.5.5 0 0 0-1 0v1.5a.5.5 0 0 0 1 0zm6 0a.5.5 0 0 0-1 0v1.5a.5.5 0 0 0 1 0z"/>
+                  </svg>
+                  <span class="text-dark-gray-text">Velocidade do vento</span>
                 </div>
               </label>
               <div class="grid grid-cols-2 gap-3 ml-8">
                 <div>
                   <label class="text-xs text-gray-500 mb-1 block">Mínimo (km/h)</label>
                   <input type="number" [(ngModel)]="weatherConditions.wind.min" placeholder="15" 
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none" />
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none" />
                 </div>
                 <div>
                   <label class="text-xs text-gray-500 mb-1 block">Máximo (km/h)</label>
                   <input type="number" [(ngModel)]="weatherConditions.wind.max" placeholder="30" 
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none" />
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none" />
                 </div>
               </div>
             </div>
 
-            <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+            <div class="p-3 bg-pure-white rounded-lg border border-gray-200">
               <label class="flex items-center gap-3 mb-2">
-                <input type="checkbox" [(ngModel)]="weatherConditions.temperature.enabled" class="w-5 h-5 text-blue-600" />
+                <input type="checkbox" [(ngModel)]="weatherConditions.temperature.enabled" class="w-5 h-5 text-sky-primary" />
                 <div class="flex items-center gap-2">
-                  <span>🌡️</span>
-                  <span class="text-gray-700">Temperatura</span>
+                  <svg class="svg-icon-sm text-sun-alerts" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                  </svg>
+                  <span class="text-dark-gray-text">Temperatura</span>
                 </div>
               </label>
               <div class="grid grid-cols-2 gap-3 ml-8">
                 <div>
                   <label class="text-xs text-gray-500 mb-1 block">Mínima (°C)</label>
                   <input type="number" [(ngModel)]="weatherConditions.temperature.min" placeholder="20" 
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none" />
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none" />
                 </div>
                 <div>
                   <label class="text-xs text-gray-500 mb-1 block">Máxima (°C)</label>
                   <input type="number" [(ngModel)]="weatherConditions.temperature.max" placeholder="30" 
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none" />
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none" />
                 </div>
               </div>
             </div>
 
-            <label class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg cursor-pointer hover:bg-slate-100 border border-slate-100">
-              <input type="checkbox" [(ngModel)]="weatherConditions.sunny" class="w-5 h-5 text-blue-600" />
+            <label class="flex items-center gap-3 p-3 bg-pure-white rounded-lg cursor-pointer hover:bg-gray-50 border border-gray-200 transition-colors">
+              <input type="checkbox" [(ngModel)]="weatherConditions.sunny" class="w-5 h-5 text-sky-primary" />
               <div class="flex items-center gap-2 flex-1">
-                <span>☀️</span>
+                <svg class="svg-icon-sm text-sun-alerts" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                </svg>
                 <div class="flex-1">
-                  <span class="text-gray-700 block">Ensolarado</span>
+                  <span class="text-dark-gray-text block">Ensolarado</span>
                   <span class="text-xs text-gray-500">Céu com mínimo de nuvens</span>
                 </div>
               </div>
             </label>
 
-            <label class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg cursor-pointer hover:bg-slate-100 border border-slate-100">
-              <input type="checkbox" [(ngModel)]="weatherConditions.noStorms" class="w-5 h-5 text-blue-600" />
+            <label class="flex items-center gap-3 p-3 bg-pure-white rounded-lg cursor-pointer hover:bg-gray-50 border border-gray-200 transition-colors">
+              <input type="checkbox" [(ngModel)]="weatherConditions.noStorms" class="w-5 h-5 text-sky-primary" />
               <div class="flex items-center gap-2 flex-1">
-                <span>⚡</span>
+                <svg class="svg-icon-sm text-deep-secondary" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M7.5 4.75a.5.5 0 0 0-1 0v3.5a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 0 0-1 0v3.5a.5.5 0 0 0 1 0zm-5 1.5a.5.5 0 0 0-1 0v1.5a.5.5 0 0 0 1 0zm6 0a.5.5 0 0 0-1 0v1.5a.5.5 0 0 0 1 0z"/>
+                </svg>
                 <div class="flex-1">
-                  <span class="text-gray-700 block">Sem tempestades</span>
+                  <span class="text-dark-gray-text block">Sem tempestades</span>
                   <span class="text-xs text-gray-500">Alertas de raios e trovoadas</span>
                 </div>
               </div>
@@ -219,11 +253,13 @@
 
         <!-- Participantes -->
         <div>
-          <h4 class="font-semibold mb-3 text-gray-700">Participantes do Evento</h4>
-          <div class="bg-slate-50 rounded-lg p-4 border border-slate-100 mb-3">
+          <h4 class="font-semibold mb-3 text-dark-gray-text">Participantes do Evento</h4>
+          <div class="bg-pure-white rounded-lg p-4 border border-gray-200 shadow-sm mb-3">
             <div class="flex items-center gap-2 mb-3">
-              <span>👥</span>
-              <span class="text-sm text-gray-700 font-semibold">Adicionar participantes</span>
+              <svg class="svg-icon-sm text-sky-primary" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1a.261.261 0 0 1-.022-.001V7.022a.261.261 0 0 1 .022-.001c.076 0 .143.034.172.077a.75.75 0 0 1-.11.106l-3.5 3.5a.75.75 0 0 1-1.06 0l-3.5-3.5a.75.75 0 0 1 .106-1.06.75.75 0 0 1 .106-.11V2a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 .75.75v11z"/>
+              </svg>
+              <span class="text-sm text-dark-gray-text font-semibold">Adicionar participantes</span>
             </div>
             <div class="flex gap-2 mb-3">
               <input 
@@ -256,13 +292,13 @@
                   </div>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span *ngIf="participant.alertsEnabled" class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-semibold">
-                    Alertas ✓
+                  <span *ngIf="participant.alertsEnabled" class="text-xs bg-sky-primary/10 text-sky-primary px-2 py-1 rounded-full font-semibold">
+                    Alertas Ativos
                   </span>
                   <span *ngIf="!participant.alertsEnabled" class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full font-semibold">
                     Sem alertas
                   </span>
-                  <button (click)="removeParticipant(i)" class="text-red-500 hover:text-red-700 text-sm">✕</button>
+                  <button (click)="removeParticipant(i)" class="text-red-500 hover:text-red-700 text-sm">Remover</button>
                 </div>
               </div>
             </div>
@@ -285,19 +321,21 @@
     <!-- ALERTAS TAB -->
     <div *ngIf="activeTab === 'alertas'" class="space-y-6">
       <div>
-        <h2 class="text-2xl font-bold mb-2 text-gray-800">Alertas</h2>
+        <h2 class="text-2xl font-bold mb-2 text-dark-gray-text">Alertas</h2>
         <p class="text-gray-600">Histórico de notificações e mudanças climáticas</p>
       </div>
 
       <div class="space-y-3">
-        <div class="bg-white rounded-xl p-4 border-l-4 border-red-500 border-r border-t border-b border-gray-200">
+        <div class="bg-pure-white rounded-xl p-4 border-l-4 border-sun-alerts border-r border-t border-b border-gray-200 shadow-sm">
           <div class="flex items-start gap-3">
-            <div class="bg-red-100 rounded-full p-2 mt-1">
-              <span class="text-red-600">⚠️</span>
+            <div class="bg-sun-alerts/10 rounded-full p-2 mt-1">
+              <svg class="svg-icon text-sun-alerts" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
             </div>
             <div class="flex-1">
               <div class="flex items-start justify-between mb-1">
-                <h4 class="font-bold text-gray-800">Alerta Crítico - Casamento Ana & Pedro</h4>
+                <h4 class="font-bold text-dark-gray-text">Alerta Crítico - Casamento Ana & Pedro</h4>
                 <span class="text-xs text-gray-500">Há 2h</span>
               </div>
               <p class="text-sm text-gray-600 mb-2">
@@ -317,19 +355,24 @@
     <!-- CONFIGURAÇÕES TAB -->
     <div *ngIf="activeTab === 'config'" class="space-y-6">
       <div>
-        <h2 class="text-2xl font-bold mb-2 text-gray-800">Configurações</h2>
+        <h2 class="text-2xl font-bold mb-2 text-dark-gray-text">Configurações</h2>
         <p class="text-gray-600">Personalize sua experiência no ClimEvent</p>
       </div>
 
-      <div class="bg-white rounded-xl p-6 border border-gray-200">
-        <h3 class="font-bold text-gray-800 mb-4">👤 Perfil</h3>
+      <div class="bg-pure-white rounded-xl p-6 border border-gray-200 shadow-md">
+        <h3 class="font-bold text-dark-gray-text mb-4 flex items-center gap-2">
+          <svg class="svg-icon text-sky-primary" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+          </svg>
+          Perfil
+        </h3>
         <div class="space-y-4">
           <div>
             <label class="block text-sm font-semibold text-gray-700 mb-2">Nome</label>
             <input 
               type="text" 
               [(ngModel)]="settings.profile.name"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none"
             />
           </div>
           <div>
@@ -337,7 +380,7 @@
             <input 
               type="email" 
               [(ngModel)]="settings.profile.email"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none"
             />
           </div>
           <div>
@@ -345,14 +388,19 @@
             <input 
               type="tel" 
               [(ngModel)]="settings.profile.whatsapp"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none"
             />
           </div>
         </div>
       </div>
 
-      <div class="bg-white rounded-xl p-6 border border-gray-200">
-        <h3 class="font-bold text-gray-800 mb-4">🔔 Notificações</h3>
+      <div class="bg-pure-white rounded-xl p-6 border border-gray-200 shadow-md">
+        <h3 class="font-bold text-dark-gray-text mb-4 flex items-center gap-2">
+          <svg class="svg-icon text-sky-primary" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+          </svg>
+          Notificações
+        </h3>
         <div class="space-y-4">
           <label class="flex items-center justify-between p-4 bg-slate-50 rounded-lg cursor-pointer border border-slate-100">
             <div>
@@ -388,13 +436,19 @@
         </div>
       </div>
 
-      <div class="bg-white rounded-xl p-6 border border-gray-200">
-        <h3 class="font-bold text-gray-800 mb-4">⚙️ Preferências</h3>
+      <div class="bg-pure-white rounded-xl p-6 border border-gray-200 shadow-md">
+        <h3 class="font-bold text-dark-gray-text mb-4 flex items-center gap-2">
+          <svg class="svg-icon text-sky-primary" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319z"/>
+          </svg>
+          Preferências
+        </h3>
         <div class="space-y-4">
           <div>
             <label class="block text-sm font-semibold text-gray-700 mb-2">Unidade de Temperatura</label>
             <select [(ngModel)]="settings.preferences.tempUnit" 
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none">
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none">
               <option value="celsius">Celsius (°C)</option>
               <option value="fahrenheit">Fahrenheit (°F)</option>
             </select>
@@ -403,7 +457,7 @@
           <div>
             <label class="block text-sm font-semibold text-gray-700 mb-2">Unidade de Velocidade</label>
             <select [(ngModel)]="settings.preferences.speedUnit"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none">
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none">
               <option value="kmh">Quilômetros por hora (km/h)</option>
               <option value="ms">Metros por segundo (m/s)</option>
               <option value="mph">Milhas por hora (mph)</option>
@@ -416,54 +470,68 @@
             <input 
               type="text" 
               [(ngModel)]="settings.preferences.location"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none"
             />
           </div>
         </div>
       </div>
 
-      <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+      <div class="bg-sky-primary/5 rounded-xl p-6 border border-sky-primary shadow-lg">
         <div class="flex items-center gap-3 mb-3">
-          <div class="bg-blue-500 rounded-full p-2">
-            <span class="text-white">⭐</span>
+          <div class="bg-sky-primary rounded-full p-2">
+            <svg class="svg-icon text-white" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
           </div>
-          <h3 class="font-bold text-gray-800">ClimEvent Pro</h3>
+          <h3 class="font-bold text-dark-gray-text">ClimEvent Pro</h3>
         </div>
         <p class="text-sm text-gray-600 mb-4">
           Desbloqueie recursos avançados: previsões até 6 meses, análise de tendências históricas e alertas ilimitados
         </p>
-        <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-          Fazer Upgrade →
+        <button class="bg-sky-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-deep-secondary transition-colors">
+          Fazer Upgrade
+          <svg class="svg-icon-sm inline ml-1" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
         </button>
       </div>
     </div>
   </div>
 
   <!-- BOTTOM NAVIGATION -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg">
+  <nav class="bg-white fixed bottom-0 left-0 right-0 bg-pure-white border-t border-gray-200 px-4 py-3 shadow-lg">
     <div class="max-w-4xl mx-auto flex justify-around items-center">
       <button 
         (click)="setActiveTab('home')"
-        [class]="'flex flex-col items-center gap-1 px-6 py-2 rounded-xl transition ' + (activeTab === 'home' ? 'text-blue-600 bg-blue-50' : 'text-gray-500')">
-        <span class="text-xl">🏠</span>
+        [class]="'flex flex-col items-center gap-1 px-6 py-2 rounded-xl transition-colors ' + (activeTab === 'home' ? 'text-sky-primary bg-sky-primary/10' : 'text-gray-500')">
+        <svg class="svg-icon" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"/>
+        </svg>
         <span class="text-xs font-semibold">Início</span>
       </button>
       <button 
         (click)="setActiveTab('create')"
-        [class]="'flex flex-col items-center gap-1 px-6 py-2 rounded-xl transition ' + (activeTab === 'create' ? 'text-blue-600 bg-blue-50' : 'text-gray-500')">
-        <span class="text-xl">➕</span>
+        [class]="'flex flex-col items-center gap-1 px-6 py-2 rounded-xl transition-colors ' + (activeTab === 'create' ? 'text-sky-primary bg-sky-primary/10' : 'text-gray-500')">
+        <svg class="svg-icon" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>
         <span class="text-xs font-semibold">Criar</span>
       </button>
       <button 
         (click)="setActiveTab('alertas')"
-        [class]="'flex flex-col items-center gap-1 px-6 py-2 rounded-xl transition ' + (activeTab === 'alertas' ? 'text-blue-600 bg-blue-50' : 'text-gray-500')">
-        <span class="text-xl">🔔</span>
+        [class]="'flex flex-col items-center gap-1 px-6 py-2 rounded-xl transition-colors ' + (activeTab === 'alertas' ? 'text-sky-primary bg-sky-primary/10' : 'text-gray-500')">
+        <svg class="svg-icon" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+        </svg>
         <span class="text-xs font-semibold">Alertas</span>
       </button>
       <button 
         (click)="setActiveTab('config')"
-        [class]="'flex flex-col items-center gap-1 px-6 py-2 rounded-xl transition ' + (activeTab === 'config' ? 'text-blue-600 bg-blue-50' : 'text-gray-500')">
-        <span class="text-xl">⚙️</span>
+        [class]="'flex flex-col items-center gap-1 px-6 py-2 rounded-xl transition-colors ' + (activeTab === 'config' ? 'text-sky-primary bg-sky-primary/10' : 'text-gray-500')">
+        <svg class="svg-icon" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+          <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319z"/>
+        </svg>
         <span class="text-xs font-semibold">Config</span>
       </button>
     </div>

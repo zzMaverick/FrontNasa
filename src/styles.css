@@ -3,14 +3,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global styles com cor branca por padrão conforme preferência do usuário */
+/* Paleta de cores Clima & Céu */
+:root {
+  --sky-blue-primary: #4A90E2;
+  --deep-blue-secondary: #1C3F72;
+  --light-gray-bg: #F5F7FA;
+  --sun-yellow-alerts: #FFC300;
+  --pure-white: #FFFFFF;
+  --dark-gray-text: #333333;
+}
+
+/* Global styles com nova paleta de cores */
 * {
-  color: white;
+  color: var(--dark-gray-text);
 }
 
 body {
-  background-color: #1a1a1a;
+  background-color: var(--light-gray-bg);
   margin: 0;
   padding: 0;
   font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Classes customizadas para a paleta de cores */
+.bg-sky-primary {
+  background-color: var(--sky-blue-primary);
+}
+
+.bg-deep-secondary {
+  background-color: var(--deep-blue-secondary);
+}
+
+.bg-sun-alerts {
+  background-color: var(--sun-yellow-alerts);
+}
+
+.text-sky-primary {
+  color: var(--sky-blue-primary);
+}
+
+.text-deep-secondary {
+  color: var(--deep-blue-secondary);
+}
+
+.text-sun-alerts {
+  color: var(--sun-yellow-alerts);
+}
+
+.border-sky-primary {
+  border-color: var(--sky-blue-primary);
+}
+
+.border-deep-secondary {
+  border-color: var(--deep-blue-secondary);
+}
+
+/* Estilos para ícones SVG */
+.svg-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: currentColor;
+}
+
+.svg-icon-sm {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+.svg-icon-lg {
+  width: 2rem;
+  height: 2rem;
+  fill: currentColor;
 }

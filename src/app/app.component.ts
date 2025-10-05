@@ -257,9 +257,9 @@ export class AppComponent {
 
   getStatusClass(status: string): string {
     if (status === 'ideal') {
-      return 'bg-emerald-50 text-emerald-700 border border-emerald-200';
+      return 'bg-sky-primary/10 text-sky-primary border border-sky-primary/20';
     }
-    return 'bg-amber-50 text-amber-700 border border-amber-200';
+    return 'bg-sun-alerts/10 text-sun-alerts border border-sun-alerts/20';
   }
 
   getStatusText(status: string): string {

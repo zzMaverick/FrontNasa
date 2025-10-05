@@ -158,7 +158,6 @@
           </div>
         </div>
 
-
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block font-semibold mb-2 text-gray-700">Data</label>
@@ -170,6 +169,44 @@
             <input type="time" [(ngModel)]="newEvent.time"
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none" />
           </div>
+        </div>
+        
+        <!-- Seção de Participantes -->
+        <div class="form-group mt-4">
+          <h4 class="font-semibold mb-3 text-dark-gray-text">Participantes</h4>
+          
+          <!-- Lista de participantes -->
+          <div class="flex flex-col gap-2 mb-4">
+            <div *ngFor="let participant of participantsList" class="flex items-center bg-gray-100 rounded-full px-3 py-2">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mr-2" [style.background-color]="participant.color">
+                {{ participant.initials }}
+              </div>
+              <span class="mr-2">{{ participant.name }}</span>
+              <button class="text-red-500" (click)="removeNewParticipant(participant)">
+                <svg class="svg-icon-sm" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Formulário para adicionar participante -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="form-group">
+              <label class="block font-semibold mb-2 text-gray-700">Nome</label>
+              <input type="text" [(ngModel)]="participantForm.name" placeholder="Nome do participante" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none">
+            </div>
+            <div class="form-group">
+              <label class="block font-semibold mb-2 text-gray-700">Telefone</label>
+              <input type="tel" [(ngModel)]="participantForm.phone" placeholder="(00) 00000-0000" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20 outline-none">
+            </div>
+          </div>
+          
+          <button class="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold" (click)="addNewParticipant()">
+            Adicionar Participante
+          </button>
         </div>
 
         <div>

@@ -44,6 +44,47 @@ export class AppComponent {
   title = 'ClimEvent';
   activeTab = 'home';
   
+  // Participantes do evento
+  participantsList: Participant[] = [];
+  participantForm: Participant = {
+    name: '',
+    phone: '',
+    initials: '',
+    color: '',
+    alertsEnabled: true
+  };
+  
+  // Métodos para gerenciar participantes
+  addNewParticipant() {
+    if (this.participantForm.name.trim() === '') return;
+    
+    // Gerar iniciais a partir do nome
+    const nameParts = this.participantForm.name.split(' ');
+    this.participantForm.initials = nameParts.length > 1 
+      ? (nameParts[0][0] + nameParts[1][0]).toUpperCase()
+      : nameParts[0].substring(0, 2).toUpperCase();
+    
+    // Gerar cor aleatória
+    const colors = ['#4A90E2', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899'];
+    this.participantForm.color = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Adicionar à lista
+    this.participantsList.push({...this.participantForm});
+    
+    // Resetar formulário
+    this.participantForm = {
+      name: '',
+      phone: '',
+      initials: '',
+      color: '',
+      alertsEnabled: true
+    };
+  }
+  
+  removeNewParticipant(participant: Participant) {
+    this.participantsList = this.participantsList.filter(p => p !== participant);
+  }
+
   events: Event[] = [
     {
       id: 1,
@@ -369,5 +410,5 @@ export class AppComponent {
 
 // estamos documentando tudo, vc acha q cabe alguma alteração noq ja esta feito?
 
-//  
+//
 

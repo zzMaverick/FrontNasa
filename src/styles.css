@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles com cor branca por padrão conforme preferência do usuário */
+* {
+  color: white;
+}
+
+body {
+  background-color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
